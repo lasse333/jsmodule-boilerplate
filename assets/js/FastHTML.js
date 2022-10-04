@@ -15,24 +15,36 @@ export function createElement(type, attributesIn, childrenIn) {
     let element = document.createElement(type)
     Object.assign(element, attributes)
 
-    if (attributes.style) Object.assign(element.style, attributes.style)
-
-    children.forEach(e => {
-        if (e == null) return
-        element.appendChild(e)
-    })
-
+    if (attributes.style) changeStyle(element, attributes.style)
+    
+    addChildren(element, children) 
+    
     return element
 }
 
-export function changeStyle(selectors, style) {
-    document.querySelectorAll(selectors).forEach((element) => {
-        Object.assign(element.style, style)
-    })
+export function changeStyle(parrentElement, style) {
+    if (typeof parrentElement == "String") {
+        document.querySelectorAll(selectors).forEach((element) => {
+            applyStyle(element, style)
+        })
+    } else {
+        applyStyle(parrentElement, style)
+    }
+}
+
+function applyStyle(element, style) {
+    if (!(style instanceof CSSStyleSheet)) Object.assign(element.style, style)
+    else {
+            if (!element.shadowRoot) element.attachShadow({mode: "open"})
+            element.shadowRoot.adoptedStyleSheets = [...document.adoptedStyleSheets, style]
+    }
 }
 
 export function addChildren(element, children) {
-    children.forEach(child => element.appendChild(child))
+    children.forEach(child => {
+        if (element.shadowRoot) element.shadowRoot.appendChild(child)
+        else element.appendChild(child)
+    })
 
     return element
 }
@@ -43,8 +55,12 @@ export function changeUrlPath(path) {
 
 }
 
-export function clearChildren(selectors) {
-    document.querySelectorAll(selectors).forEach((element) => {
-        element.innerHTML = ""
-    })
+export function clearChildren(parrentElement) {
+    if (typeof parrentElement == "String") {
+        document.querySelectorAll(parrentElement).forEach((element) => {
+            element.innerHTML = ""
+        })
+    } else {
+        parrentElement.innerHTML = ""
+    }
 }
