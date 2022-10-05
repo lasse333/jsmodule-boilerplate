@@ -29,6 +29,7 @@ export function changeStyle(parrentElement, style) {
         })
     } else {
         applyStyle(parrentElement, style)
+        return parrentElement
     }
 }
 
@@ -41,7 +42,17 @@ function applyStyle(element, style) {
 }
 
 export function addChildren(element, children) {
-    children.forEach(child => {
+    children.forEach(childIn => {
+        let child = childIn
+        let parser = new DOMParser()
+
+        if (typeof child == "string") {
+            child = parser.parseFromString(child, "text/html")
+            child.querySelectorAll("script").forEach(scriptTag => scriptTag.remove())
+            addChildren(element, Array.from(child.body.children))
+            return element
+        }
+
         if (element.shadowRoot) element.shadowRoot.appendChild(child)
         else element.appendChild(child)
     })
