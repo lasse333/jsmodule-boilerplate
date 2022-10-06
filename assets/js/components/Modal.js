@@ -1,8 +1,6 @@
 import { addChildren, changeStyle, clearChildren, createElement } from "../FastHTML.js";
 
 let modal
-let visable = false
-let scrollPos = 0
 
 export default function Modal(input) {
 
@@ -10,20 +8,21 @@ export default function Modal(input) {
 
     addChildren(modal, [input])
 
-    visable = true
-    scrollPos = window.scrollY
+    document.body.style.overflow = "hidden"
     
     changeStyle(modal, {
         display: "grid",
         overflowY: "scroll"
     })
 
+    modal.scrollTo(0,0)
+
 }
 
 export function ModalBase() {
 
-    window.addEventListener("scroll", () => {
-        if (visable) window.scroll({top: scrollPos, behavior: 'auto'})
+    window.addEventListener("keyup", (e) => {
+        if (e.code == "Escape") closeModal()
     })
 
     modal = createElement("div", {id: "modal", style: {
@@ -49,5 +48,5 @@ export function ModalBase() {
 
 export function closeModal() {
     modal.style.display = "none"
-    visable = false
+    document.body.style = null
 }
