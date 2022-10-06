@@ -19,7 +19,7 @@ export async function getImage(url, saveUrl=url) {
     try {
         response = await fetch(url)
     } catch {
-        return getStorage(saveUrl)
+        if (saveUrl != null) return getStorage(saveUrl)
     }
     let data = new Uint8Array(await response.arrayBuffer())
     
@@ -29,7 +29,7 @@ export async function getImage(url, saveUrl=url) {
 
     output = btoa(output);
 
-    if (response.ok) saveStorage(saveUrl, output)
+    if (response.ok && saveUrl != null) saveStorage(saveUrl, output)
 
     return output
 }
