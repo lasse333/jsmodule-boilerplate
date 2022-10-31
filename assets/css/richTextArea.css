@@ -1,0 +1,17 @@
+.rich-text {
+    padding: 10px;
+    background-color: white;
+    border: 1px solid grey;
+}
+
+.raw-text {
+    display: none;
+}
+
+.tool-bar {
+    display: flex;
+}
+
+ul {
+    margin-left: 1.2rem;
+}
