@@ -12,6 +12,17 @@ class url {
     get origin () {return (this.protocol ? this.protocol : "http:") + "//" + this.host}
     get href () {return this.origin + (this.path ? this.path : "/") + (this.hash ? this.hash : "") + (this.search ? this.search : "")}
 
+    /**
+     * @param {Object} options
+     * @param {string} options.protocol
+     * @param {string} options.hostname
+     * @param {string} options.port
+     * @param {string} options.path
+     * @param {string} options.content
+     * @param {string} options.search
+     * @param {string} options.hash
+     * @returns 
+     */
     clone = (options={}) => {
         return new url((options.protocol || this.protocol), (options.hostname || this.hostname), (options.port || this.port), (options.path || this.path) + (options.content ? options.content : ""), (options.search || this.search), (options.hash || this.hash))
     }
