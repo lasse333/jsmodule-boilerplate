@@ -1,6 +1,17 @@
+import { addChildren, createElement } from "./FastHTML.js"
+
 function App() {
 
-    console.log("hello")
+    let header
+    let main
+    let footer
+
+    addChildren(document.body, [
+        header = createElement("header"),
+        main = createElement("main"),
+        footer = createElement("footer")
+    ])
+    
     
 }
 
