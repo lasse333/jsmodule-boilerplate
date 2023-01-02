@@ -1,13 +1,13 @@
+import Header from "./components/Header.js"
 import { addChildren, createElement } from "./FastHTML.js"
 
 function App() {
 
-    let header
     let main
     let footer
 
     addChildren(document.body, [
-        header = createElement("header"),
+        Header(),
         main = createElement("main"),
         footer = createElement("footer")
     ])
