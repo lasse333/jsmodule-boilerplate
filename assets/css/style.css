@@ -2,7 +2,6 @@ html {
     box-sizing: border-box;
     font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
     font-size: 16px;
-    color: white;
 }
 
 *, *::before, *::after {
@@ -19,22 +18,19 @@ body {
 
 header {
     height: 100px;
-    background-color: rgb(55, 55, 55);
-    padding: 20px;
-    display: flex;
-    justify-content: space-between;
+    background-color: black;
 }
 
 main {
-    /* max-width: 1200px; */
+    max-width: 1200px;
     width: 100%;
     height: 100%;
     flex-grow: 1;
     margin: 0 auto;
-    background-color: rgb(27, 27, 27);
+    background-color: purple;
 }
 
 footer {
     height: 50px;
-    background-color: rgb(55, 55, 55);
+    background-color: violet;
 }
