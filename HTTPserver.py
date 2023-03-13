@@ -15,10 +15,12 @@ banned_paths = [".py"]
 def page_not_found(e):
     return send_file("404.html"), 404
 
+
 @app.route('/')
 def home_page():
     resp = make_response(send_file("index.html"))
     return resp
+
 
 @app.route('/<path:filename>')
 def getfile(filename):
@@ -56,7 +58,7 @@ def getfile(filename):
         else:
 
             return abort(404), 404
-    
+
     else:
 
         if os.path.isfile(filename):
@@ -68,5 +70,4 @@ def getfile(filename):
             return abort(404), 404
 
 
-
-app.run(host='0.0.0.0', port=80, use_reloader=True)
+app.run(host='0.0.0.0', port=11000, use_reloader=True)
