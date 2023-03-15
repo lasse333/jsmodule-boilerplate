@@ -65,7 +65,9 @@ export class BarcodeScanner {
     this.videoElement = videoElement;
     this.canvas = new OffscreenCanvas(1, 1);
     this.ctx = this.canvas.getContext("2d");
-    this.barcodeDetector = new BarcodeDetector({ formats: [codeType] });
+    if ("BarcodeDetector" in window) {
+      this.barcodeDetector = new BarcodeDetector({ formats: [codeType] });
+    }
     this.running = false;
     this.onScan = function (code) {
       console.log("Detected barcode: " + code);
@@ -73,6 +75,9 @@ export class BarcodeScanner {
   }
 
   start() {
+    if (!("barcodeDetector" in window)) {
+      return;
+    }
     if (this.running) {
       return;
     }
