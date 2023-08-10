@@ -111,6 +111,7 @@ export function clearChildren(parrentElement) {
             element.innerHTML = ""
         })
     } else {
+        if (parrentElement.shadowRoot) parrentElement.shadowRoot.innerHTML = ""
         parrentElement.innerHTML = ""
         return parrentElement
     }
