@@ -75,7 +75,7 @@ export class BarcodeScanner {
   }
 
   start() {
-    if (!("barcodeDetector" in window)) {
+    if (!("BarcodeDetector" in window)) {
       return;
     }
     if (this.running) {
