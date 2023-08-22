@@ -13,24 +13,24 @@ async function App() {
     scanner.stop();
     camera.stopCamera();
   };
-  {
-    let fridge = new IndexedDB("fridge", [
-      { storeName: "items", dataType: "object" },
-      { storeName: "images", dataType: "arrayBuffer" },
-    ]);
-    await fridge.open();
+  // {
+  //   let fridge = new IndexedDB("fridge", [
+  //     { storeName: "items", dataType: "object" },
+  //     { storeName: "images", dataType: "arrayBuffer" },
+  //   ]);
+  //   await fridge.open();
 
-    const { items, images } = fridge.tables;
+  //   const { items, images } = fridge.tables;
 
-    let buffer = new Uint8Array([1, 2, 3]).buffer;
+  //   let buffer = new Uint8Array([1, 2, 3]).buffer;
 
-    let myImage = await images.add(buffer);
-    await items.add({ image: myImage, name: "hello" });
-    console.log(await myImage);
-    console.log(await images.get(myImage));
+  //   let myImage = await images.add(buffer);
+  //   await items.add({ image: myImage, name: "hello" });
+  //   console.log(await myImage);
+  //   console.log(await images.get(myImage));
 
-    console.log(fridge);
-  }
+  //   console.log(fridge);
+  // }
 
   let header;
   let main;
@@ -55,6 +55,7 @@ async function App() {
       }),
     ])),
   ]);
+  return "";
 }
 
 export default App;
