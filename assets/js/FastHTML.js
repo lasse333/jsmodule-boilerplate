@@ -75,7 +75,7 @@ function applyStyle(element, style) {
 
 /**
  * @async
- * @param {String} from
+ * @param {string} from
  * @returns {Promise<CSSStyleSheet>}
  */
 export async function importCSS(from) {
