@@ -1,9 +1,17 @@
 import App from "./App.js";
-import { clearChildren, addChildren, changeStyle } from "./FastHTML.js";
-import mainStyle from "../css/defaults/style.css" assert { type: "css" };
+import {
+  clearChildren,
+  addChildren,
+  changeStyle,
+  importCSS,
+} from "./FastHTML.js";
 
 // **  IIFE: Immediately Invoked Function Expression  */
 (async function () {
+  let mainStyle = await importCSS(
+    location.href + "assets/css/defaults/style.css",
+  );
+
   document.adoptedStyleSheets = [mainStyle];
 
   addChildren(document.body, await App());

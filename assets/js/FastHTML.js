@@ -74,6 +74,19 @@ function applyStyle(element, style) {
 }
 
 /**
+ * @async
+ * @param {String} from
+ * @returns {Promise<CSSStyleSheet>}
+ */
+export async function importCSS(from) {
+  let css_text = await fetch(from);
+  css_text = await css_text.text();
+  let css_obj = new CSSStyleSheet();
+  css_obj.replaceSync(css_text);
+  return css_obj;
+}
+
+/**
  * @param {HTMLElement} element
  * @param {(HTMLElement|string|DocumentFragment)[]|string|HTMLElement|DocumentFragment} childrenIn
  * @returns {HTMLElement}
