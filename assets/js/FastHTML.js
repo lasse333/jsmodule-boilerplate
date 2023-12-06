@@ -182,3 +182,14 @@ export async function simpleRoutesAsync(routes = {}) {
     }
   }
 }
+
+export function createImageFromArrayBuffer(
+  arrayBuffer,
+  mimeType = "image/png",
+) {
+  const blob = new Blob([arrayBuffer], { type: mimeType });
+  const url = URL.createObjectURL(blob);
+  const img = new Image();
+  img.src = url;
+  return img;
+}
