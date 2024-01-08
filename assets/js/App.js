@@ -1,18 +1,9 @@
-import { addChildren, createElement } from "./FastHTML.js";
 import IndexedDB from "./components/IndexedDB.js";
-import Camera, { BarcodeScanner } from "./components/Camera.js";
+import CameraExample from "./pages/examples/camera.js";
+import IndexedDBExample from "./pages/examples/indexeddb.js";
 
-async function App() {
-  let camera = new Camera({
-    video: { height: 200, width: 200, facingMode: "environment" },
-  });
-  let scanner = new BarcodeScanner(camera.videoElement, "ean_13");
-  let codeOutput = createElement("p");
-  scanner.onScan = (code) => {
-    codeOutput.innerText = code;
-    scanner.stop();
-    camera.stopCamera();
-  };
+export default async function App() {
+
   // {
   //   let fridge = new IndexedDB("fridge", [
   //     { storeName: "items", dataType: "object" },
@@ -32,30 +23,7 @@ async function App() {
   //   console.log(fridge);
   // }
 
-  let header;
-  let main;
-  let footer;
 
-  addChildren(document.body, [
-    (header = createElement("header")),
-    (main = createElement("main", {}, [camera.videoElement, codeOutput])),
-    (footer = createElement("footer", {}, [
-      createElement("button", {
-        onclick: async function () {
-          await camera.startCamera();
-        },
-        innerText: "startCamera",
-      }),
-      createElement("button", {
-        onclick: async function () {
-          if (!camera.running) await camera.startCamera();
-          await scanner.start();
-        },
-        innerText: "startScanner",
-      }),
-    ])),
-  ]);
-  return "";
+  // return await CameraExample()
+  return await IndexedDBExample()
 }
-
-export default App;

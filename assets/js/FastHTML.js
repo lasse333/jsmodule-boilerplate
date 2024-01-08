@@ -79,7 +79,7 @@ function applyStyle(element, style) {
  * @returns {Promise<CSSStyleSheet>}
  */
 export async function importCSS(from) {
-  let css_text = await fetch(from);
+  let css_text = await fetch(location.href + from);
   css_text = await css_text.text();
   let css_obj = new CSSStyleSheet();
   css_obj.replaceSync(css_text);

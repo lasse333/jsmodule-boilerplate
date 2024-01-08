@@ -8,11 +8,10 @@ import {
 
 // **  IIFE: Immediately Invoked Function Expression  */
 (async function () {
-  let mainStyle = await importCSS(
-    location.href + "assets/css/defaults/style.css",
-  );
+  let mainStyle = await importCSS("assets/css/defaults/style.css");
+  let buttonStyle = await importCSS("assets/css/defaults/button.css");
 
-  document.adoptedStyleSheets = [mainStyle];
+  document.adoptedStyleSheets = [mainStyle, buttonStyle];
 
   addChildren(document.body, await App());
 
