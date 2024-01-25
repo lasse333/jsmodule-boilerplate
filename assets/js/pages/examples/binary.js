@@ -25,6 +25,10 @@ export default async function BinaryExample() {
   myData.byte.unsigned++;
   console.log(myData.byte.signed); // -128
 
+  myData.short.unsigned = 55123;
+
+  myData.int.unsigned = 3_123_123_123;
+
   myData.long.signed = -1;
   console.log(myData.long.unsigned); // 18446744073709551615n
 
