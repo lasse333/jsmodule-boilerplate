@@ -16,9 +16,9 @@ export default async function BinaryExample() {
   myData.create("int", Int);
   myData.create("long", Long);
 
-  myData.sections.byte.unsigned = 127;
+  myData.byte.unsigned = 127;
   console.log(myData.byte.signed); // 127
-  myData.sections.byte.unsigned++;
+  myData.byte.unsigned++;
   console.log(myData.byte.signed); // -128
 
   myData.long.signed = -1;
