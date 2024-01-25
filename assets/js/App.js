@@ -1,9 +1,9 @@
 import IndexedDB from "./components/IndexedDB.js";
+import BinaryExample from "./pages/examples/binary.js";
 import CameraExample from "./pages/examples/camera.js";
 import IndexedDBExample from "./pages/examples/indexeddb.js";
 
 export default async function App() {
-
   // {
   //   let fridge = new IndexedDB("fridge", [
   //     { storeName: "items", dataType: "object" },
@@ -23,7 +23,7 @@ export default async function App() {
   //   console.log(fridge);
   // }
 
-
   // return await CameraExample()
-  return await IndexedDBExample()
+  return await BinaryExample();
+  return await IndexedDBExample();
 }
