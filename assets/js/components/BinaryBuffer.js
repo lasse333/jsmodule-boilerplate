@@ -24,7 +24,7 @@ class BinarySection {
     this.buffer = buffer;
     this.endian = BinarySection.endianType.little;
 
-    this.buffer.resize(this.buffer.size + size);
+    this.buffer.data.buffer.resize(this.buffer.size + size);
 
     Object.defineProperty(buffer, name, { value: this });
   }
@@ -124,5 +124,37 @@ export class Long extends BinarySection {
   set signed(value) {
     this.buffer.data.setBigInt64(this.offset, BigInt(value), this.endian);
   }
+  static size = 8;
+}
+
+export class Float32 extends BinarySection {
+  constructor(name, offset, buffer) {
+    super(name, offset, buffer, Float32.size);
+  }
+
+  get value() {
+    return this.buffer.data.getFloat32(this.offset, this.endian);
+  }
+
+  set value(value) {
+    this.buffer.data.setFloat32(this.offset, value, this.endian);
+  }
+
+  static size = 4;
+}
+
+export class Float64 extends BinarySection {
+  constructor(name, offset, buffer) {
+    super(name, offset, buffer, Float64.size);
+  }
+
+  get value() {
+    return this.buffer.data.getFloat64(this.offset, this.endian);
+  }
+
+  set value(value) {
+    this.buffer.data.setFloat64(this.offset, value, this.endian);
+  }
+
   static size = 8;
 }
