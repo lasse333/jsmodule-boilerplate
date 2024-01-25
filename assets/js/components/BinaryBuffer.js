@@ -14,7 +14,6 @@ export default class BinaryBuffer {
 
   create(name, type) {
     this.sections[name] = new type(name, this.size, this);
-    this.data.buffer.resize(this.size + type.size);
   }
 }
 
@@ -23,8 +22,9 @@ class BinarySection {
     this.name = name;
     this.offset = offset;
     this.buffer = buffer;
-    this.size = size;
     this.endian = BinarySection.endianType.little;
+
+    this.buffer.resize(this.buffer.size + size);
 
     Object.defineProperty(buffer, name, { value: this });
   }
