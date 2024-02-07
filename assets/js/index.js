@@ -10,8 +10,9 @@ import {
 (async function () {
   let mainStyle = await importCSS("assets/css/defaults/style.css");
   let buttonStyle = await importCSS("assets/css/defaults/button.css");
+  let textInputStyle = await importCSS("assets/css/defaults/textinput.css");
 
-  document.adoptedStyleSheets = [mainStyle, buttonStyle];
+  document.adoptedStyleSheets = [mainStyle, buttonStyle, textInputStyle];
 
   addChildren(document.body, await App());
 

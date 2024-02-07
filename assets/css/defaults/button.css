@@ -1,4 +1,6 @@
-button {
+button,
+input[type="submit"],
+input[type="button"] {
   margin: 5px;
   padding: 10px;
   font-size: 16px;

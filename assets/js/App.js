@@ -23,7 +23,7 @@ export default async function App() {
   //   console.log(fridge);
   // }
 
-  // return await CameraExample()
-  return await BinaryExample();
+  // return await CameraExample();
+  // return await BinaryExample();
   return await IndexedDBExample();
 }
