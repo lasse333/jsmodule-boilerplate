@@ -26,7 +26,7 @@ export default class IndexedDB {
         this.storeConfigs.forEach((storeConfig) => {
           this.tables[storeConfig.storeName] = new IndexedDBTable(
             this,
-            storeConfig.storeName
+            storeConfig.storeName,
           );
         });
         resolve();
@@ -143,13 +143,13 @@ export default class IndexedDB {
           let data;
           switch (dataType) {
             case "arrayBuffer":
-              data = result.data;
+              data = result;
               break;
             case "object":
-              data = result.data;
+              data = result;
               break;
             default:
-              data = result.data;
+              data = result;
           }
           return data;
         });
@@ -195,7 +195,7 @@ class IndexedDBTable {
   }
 
   async getAll() {
-    return await this.db.add(this.name);
+    return await this.db.getAll(this.name);
   }
 
   async delete(id) {
