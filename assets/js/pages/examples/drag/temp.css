@@ -1,0 +1,39 @@
+section {
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+
+  & * {
+    user-select: none;
+  }
+
+  & div {
+    flex: 5;
+    display: flex;
+    flex-direction: column;
+    background-color: lightblue;
+    gap: 5px;
+    padding: 10px;
+
+    & > div {
+      flex: none;
+    }
+
+    &.item-list {
+      flex: 1;
+      background-color: cadetblue;
+
+      & span {
+        border-radius: 5px;
+        background-color: white;
+        color: #525252;
+        padding: 10px;
+
+        & > * {
+          display: none;
+        }
+      }
+    }
+  }
+}
