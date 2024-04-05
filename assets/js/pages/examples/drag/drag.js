@@ -21,6 +21,7 @@ export default async function DragAndDropExample() {
     e.stopPropagation();
 
     this.append(elementBeingDragged.cloneNode(true));
+    elementBeingDragged = null;
   }
 
   return [
@@ -58,7 +59,10 @@ export default async function DragAndDropExample() {
             [createElement("div", {}, ["<h1>HELLO</h1><p>hello</p>"])],
           ),
         ]),
-        createElement("div", { ondrop: drop, ondragover: overdrag }),
+        createElement("div", {
+          ondrop: drop,
+          ondragover: overdrag,
+        }),
       ]),
     ]),
   ];
