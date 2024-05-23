@@ -13,6 +13,28 @@ export default class DateTime extends Date {
     ).getStartOfDay;
   }
 
+  static getMaxAmount = {
+    days: (year, month) => {
+      return [
+        31, // January
+        new DateTime(year, 1, 29).getMonth() == 1 ? 29 : 28, // Febuary
+        31, // March
+        30, // April
+        31, // May
+        30, // June
+        31, // July
+        31, // August
+        30, // September
+        31, // October
+        30, // November
+        31, // December
+      ][month];
+    },
+    weeks: (year) => {
+      return DateTime.fromWeekNumber(year, 53).getWeek == 53 ? 53 : 52;
+    },
+  };
+
   getDay() {
     return (super.getDay() + 6) % 7;
   }
