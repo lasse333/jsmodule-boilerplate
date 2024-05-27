@@ -88,15 +88,15 @@ export default class DateTime extends Date {
         ) + 1;
 
       if (weekNumber < 1) {
-        firstFixedDayOfWeekOne = new DateTime(
-          mondayOfWeekOne.getFullYear(),
-          0,
-          4,
-        );
+        firstFixedDayOfWeekOne = new DateTime(this.getFullYear(), 0, 4);
       }
     } while (weekNumber < 1);
 
     return weekNumber;
+  }
+
+  get toWeekString() {
+    return `${this.getFullYear()}-W${this.getWeek.toString().padStart(2, "0")}`;
   }
 }
 
