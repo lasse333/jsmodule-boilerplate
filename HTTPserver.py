@@ -5,6 +5,7 @@ import mimetypes
 mimetypes.add_type('application/javascript', '.js')
 mimetypes.add_type('application/javascript', '.mjs')
 mimetypes.add_type('text/css', '.css')
+mimetypes.add_type('application/wasm', '.wasm')
 
 app = Flask(__name__)
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
@@ -58,6 +59,15 @@ def getfile(filename):
         else:
 
             return abort(404), 404
+        
+    elif filename[-5:] == ".wasm":
+        print("wasm")
+        if os.path.isfile(filename):
+
+            return send_file(filename, "application/wasm")
+        else:
+
+            return abort(404), 404
 
     else:
 
@@ -70,4 +80,4 @@ def getfile(filename):
             return abort(404), 404
 
 
-app.run(host='0.0.0.0', port=11000, use_reloader=True)
+app.run(host='0.0.0.0', port=12000, use_reloader=True)
